@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home" />
-        <activity android:name=".Message"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+        <activity
+            android:name=".Message"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>

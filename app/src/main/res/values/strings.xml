@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Chat Beta II</string>
+    <string name="settings">Settings</string>
 </resources>

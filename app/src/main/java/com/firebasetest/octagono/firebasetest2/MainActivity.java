@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.firebasetest.octagono.firebasetest2.Fragments.MainActivityFragments.LogInFragment;
 import com.firebasetest.octagono.firebasetest2.Fragments.MainActivityFragments.RegisterFragment;
 import com.firebasetest.octagono.firebasetest2.Models.User;
+import com.firebasetest.octagono.firebasetest2.Util.FDatabase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     FragmentManager fm = getSupportFragmentManager();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("users");
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     @Override
@@ -37,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fm.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).add(R.id.fragment_container,LogInFragment.newInstance()).commit();
         mAuth = FirebaseAuth.getInstance();
+        database = FDatabase.getDatabase();
+
+        myRef = database.getReference("users");
+
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

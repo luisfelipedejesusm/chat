@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,11 +49,17 @@ public class MessageAdapter extends ArrayAdapter<Message> {
             LinearLayout chatBubbleIncomingView = (LinearLayout) listItemView.findViewById(R.id.chat_incoming_view);
             LinearLayout chatBubbleOutgoingView = (LinearLayout) listItemView.findViewById(R.id.chat_outcoming_view);
             TextView chatBubbleOutgoing = (TextView) listItemView.findViewById(R.id.txtchatoutgoing);
+            ImageView vistoOutgoing = (ImageView) listItemView.findViewById(R.id.vistooutgoing);
             TextView chatBubbleOutgoingdate = (TextView) listItemView.findViewById(R.id.txtchatoutgoingdate);
             calendar.setTime(currentMessage.getMessageDate());
+            if (currentMessage.isVisto()){
+                vistoOutgoing.setImageResource(R.mipmap.ic_remove_red_eye_white_24dp);
+            }else if(!currentMessage.isVisto()){
+                vistoOutgoing.setImageResource(R.mipmap.ic_done_white_24dp);
+            }
 
             chatBubbleOutgoing.setText(currentMessage.getMessageBody());
-            chatBubbleOutgoingdate.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE));
+            chatBubbleOutgoingdate.setText(String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE)));
 
             chatBubbleOutgoingView.setVisibility(View.VISIBLE);
             chatBubbleIncomingView.setVisibility(View.GONE);
@@ -61,9 +68,15 @@ public class MessageAdapter extends ArrayAdapter<Message> {
             TextView chatBubbleIncomingdate = (TextView) listItemView.findViewById(R.id.txtchatincomingdate);
             LinearLayout chatBubbleIncomingView = (LinearLayout) listItemView.findViewById(R.id.chat_incoming_view);
             LinearLayout chatBubbleOutgoingView = (LinearLayout) listItemView.findViewById(R.id.chat_outcoming_view);
+/*            ImageView vistoIncoming = (ImageView) listItemView.findViewById(R.id.vistoincoming);
+            if (currentMessage.isVisto()){
+                vistoIncoming.setImageResource(R.mipmap.ic_remove_red_eye_white_24dp);
+            }else if(!currentMessage.isVisto()){
+                vistoIncoming.setImageResource(R.mipmap.ic_done_white_24dp);
+            }*/
             calendar.setTime(currentMessage.getMessageDate());
 
-            chatBubbleIncomingdate.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE));
+            chatBubbleIncomingdate.setText(String.format("%02d:%02d", calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE)));
             chatBubbleIncoming.setText(currentMessage.getMessageBody());
 
             chatBubbleOutgoingView.setVisibility(View.GONE);
