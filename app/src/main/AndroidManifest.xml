@@ -19,8 +19,9 @@
         <activity android:name=".Home" />
         <activity
             android:name=".Message"
-            android:windowSoftInputMode="adjustResize"></activity>
-        <activity android:name=".Settings"></activity>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Settings" />
+        <activity android:name=".UpdateProfile"></activity>
     </application>
 
 </manifest>

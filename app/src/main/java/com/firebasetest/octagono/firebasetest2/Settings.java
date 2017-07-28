@@ -106,6 +106,10 @@ public class Settings extends AppCompatActivity {
 
     }
 
+    public void gotoUpdateProfile(View view){
+        Intent intent = new Intent(this, UpdateProfile.class);
+    }
+
     public void loadUserData(){
         if (currentUser.getFoto64() != null) {
             Glide.with(this)
